@@ -47,7 +47,6 @@ export class FetchClass{
     writeTotalHits(promise) {
         promise.then(promise => {
             this.totalHits = promise.totalHits;
-            console.log("this.totalHits", this.totalHits);
         });
     }
 

@@ -15,16 +15,16 @@ const submitForm = (event) => {
     let searchQueryValue = event.target.elements.searchQuery.value;
     
     refs.listGallery.innerHTML = "";
-    foo.resetPage();
-    foo.writeSearchText(searchQueryValue);
-    foo.fetchFilter(foo.makeFetch()).then(arr => {
+    searchGallery.resetPage();
+    searchGallery.writeSearchText(searchQueryValue);
+    searchGallery.fetchFilter(searchGallery.makeFetch()).then(arr => {
         if (arr.length > 0) {
             refs.listGallery.insertAdjacentHTML("beforeend", imgCards(arr));
-            foo.writeTotalHits(foo.makeFetch());
-            foo.galleryRefresh();
-            foo.scrollLoad(refs.listGallery);
+            searchGallery.writeTotalHits(searchGallery.makeFetch());
+            searchGallery.galleryRefresh();
+            searchGallery.scrollLoad(refs.listGallery);
             setTimeout(() => {
-                Notify.info(`Hooray! We found ${foo.totalHits} images.`);
+                Notify.info(`Hooray! We found ${searchGallery.totalHits} images.`);
             }, 1000);
             return;
         }
@@ -38,4 +38,4 @@ const submitForm = (event) => {
 refs.form.addEventListener("submit", submitForm);
 
 
-const foo = new FetchClass();
+const searchGallery = new FetchClass();
